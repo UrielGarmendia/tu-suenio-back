@@ -1,9 +1,9 @@
 const server = require("./src/app");
 const { conn } = require("./src/db");
 
-// ¡Cambiar { force: true } a { force: false } para evitar re-crear la base de datos en cada inicio!
-conn.sync({ force: false }).then(() => {
+// ! Despues de terminar la db pasar a alter: true
+conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    console.log("Funcionando en http://localhost:3001");
+    console.log("funcionando en el http://localhost:3001");
   });
 });
