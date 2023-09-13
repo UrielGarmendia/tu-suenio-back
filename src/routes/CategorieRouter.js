@@ -24,6 +24,7 @@ router.get("/:id", async (req, res) => {
   try {
     const categorieId = await getAllCategorie();
     const searchId = categorieId.filter((c) => c.id == id);
+
     res.status(200).json(searchId);
   } catch (error) {
     res.status(400).send("error:" + error.message);
