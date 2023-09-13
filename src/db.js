@@ -5,9 +5,7 @@ const path = require("path");
 const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME } = process.env;
 const CategorieModel = require("./models/Categorie");
 const OrderModel = require("./models/Order");
-const OrderProductModel = require("./models/OrderProduct");
 const ProductModel = require("./models/Product");
-const ProductCategorieModel = require("./models/ProductCategorie");
 const ReviewModel = require("./models/Review");
 const UserModel = require("./models/User");
 
@@ -41,9 +39,7 @@ let capsEntries = entries.map((entry) => [
 sequelize.models = Object.fromEntries(capsEntries);
 CategorieModel(sequelize);
 OrderModel(sequelize);
-OrderProductModel(sequelize);
 ProductModel(sequelize);
-ProductCategorieModel(sequelize);
 ReviewModel(sequelize);
 UserModel(sequelize);
 
@@ -70,9 +66,9 @@ Product.belongsToMany(Order, {
 });
 
 Review.belongsTo(Product);
-Product.hasMany(Review, { foreignKey: "productId" });
+Product.hasMany(Review);
 Review.hasOne(User);
-User.hasMany(Review, { foreignKey: "userId" });
+User.hasMany(Review);
 Order.belongsTo(User);
 User.hasMany(Order);
 
