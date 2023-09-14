@@ -37,6 +37,7 @@ let capsEntries = entries.map((entry) => [
   entry[1],
 ]);
 sequelize.models = Object.fromEntries(capsEntries);
+
 CategorieModel(sequelize);
 OrderModel(sequelize);
 ProductModel(sequelize);

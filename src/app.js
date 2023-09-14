@@ -1,11 +1,13 @@
 const express = require("express");
 const morgan = require("morgan");
 const cors = require("cors");
+const bodyParser = require("body-parser");
 const routes = require("./routes/index");
 require("./db");
 
 const server = express();
 
+server.use(bodyParser.json());
 server.use(morgan("dev"));
 server.use(cors());
 server.use((req, res, next) => {
@@ -19,7 +21,7 @@ server.use((req, res, next) => {
   next();
 });
 
-// server.use("/", routes);
+server.use("/", routes);
 
 server.use((err, req, res, next) => {
   // eslint-disable-line no-unused-vars
