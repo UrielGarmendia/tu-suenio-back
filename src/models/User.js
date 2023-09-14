@@ -32,11 +32,15 @@ module.exports = (sequelize) => {
       },
       image: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       phone: {
         type: DataTypes.STRING,
         allowNull: true,
+      },
+      isDisable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
       },
     },
     {
