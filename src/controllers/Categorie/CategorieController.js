@@ -1,4 +1,4 @@
-const { Categorie } = require("../db");
+const { Categorie } = require("../../db");
 
 const getAllCategorie = async () => {
   const categorie = await Categorie.findAll();

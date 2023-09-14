@@ -1,0 +1,100 @@
+const { Router } = require("express");
+const getUserById = require("../controllers/Users/getUserById");
+const createUser = require("../controllers/Users/createUser");
+const userLogin = require("../controllers/Users/userLogin");
+const getAllUsers = require("../controllers/Users/getAllUsers");
+const deleteUser = require("../controllers/Users/deleteUser");
+const restoreUser = require("../controllers/Users/restoreUser");
+const destroyUser = require("../controllers/Users/destroyUser");
+
+const router = Router();
+
+// Traer todos los usuarios
+router.get("/", async (req, res) => {
+  try {
+    const users = await getAllUsers();
+
+    res.status(200).json(users);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Traer por id
+router.get("/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await getUserById(id);
+
+    res.status(200).json(user);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Crear un usuario (Register)
+router.post("/register", async (req, res) => {
+  try {
+    const newUser = await createUser(req.body || {});
+
+    res.status(200).json(newUser);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Entrar con usuario ya creado (Login)
+router.post("/login", async (req, res) => {
+  try {
+    const { name, password, email } = req.body;
+    const userToLogin = await userLogin(name, password, email);
+    res.status(200).json(userToLogin);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+/* Borrado logico */
+// Borrar usuario (tiene borrado logico y se es capaz de restaurar)
+router.delete("/:id/delete", async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("id: ", id);
+    await deleteUser(id);
+
+    res.status(200).json({ message: "El usuario fue eliminado" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Restaurar usuario
+router.put("/:id/restore", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await restoreUser(id);
+
+    res.status(200).json({ message: "The user has been restored" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ error: error.message });
+  }
+});
+
+// Borrado definitivo
+router.delete("/:id/destroy", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const deleted = await destroyUser(id);
+    res.status(200).json(deleted);
+  } catch (error) {
+    res.status(400).json({ error: error.message });
+  }
+});
+
+module.exports = router;

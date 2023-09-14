@@ -15,17 +15,10 @@ module.exports = (sequelize) => {
         unique: true,
       },
       description: {
-        type: DataTypes.STRING,
-      },
-      id_categorie: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.TEXT,
         allowNull: false,
       },
       size: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      color: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -41,6 +34,10 @@ module.exports = (sequelize) => {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
+      },
+      isAvailable: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: true,
       },
     },
     {
