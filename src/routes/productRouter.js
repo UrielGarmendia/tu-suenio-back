@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 
 const createProduct = require("../controllers/Products/createProduct");
@@ -19,41 +19,41 @@ router.get("/", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
-  
+
 // Ruta para obtener un producto por ID
-router.get('/:id', async (req, res) => {
-    const productId = req.params.id;
-    try {
-      const product = await getProduct(productId);
-      if (!product) {
-        return res.status(404).json({ message: 'Producto no encontrado' });
-      }
-      res.json(product);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error al obtener el producto' });
+router.get("/:id", async (req, res) => {
+  const productId = req.params.id;
+  try {
+    const product = await getProduct(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
     }
-  });
-  
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al obtener el producto" });
+  }
+});
+
 // Ruta para actualizar un producto por ID
-router.put('/:id', async (req, res) => {
-    const productId = req.params.id;
-    const updatedProductData = req.body;
-    try {
-      const product = await putProduct(productId);
-      if (!product) {
-        return res.status(404).json({ message: 'Producto no encontrado' });
-      }
-      await product.update(updatedProductData);
-      res.json(product);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ message: 'Error al actualizar el producto' });
+router.put("/:id", async (req, res) => {
+  const productId = req.params.id;
+  const updatedProductData = req.body;
+  try {
+    const product = await putProduct(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Producto no encontrado" });
     }
-  });
-  
+    await product.update(updatedProductData);
+    res.json(product);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar el producto" });
+  }
+});
+
 // Ruta para crear un nuevo producto
-router.post('/create', async (req, res) => {
+router.post("/create", async (req, res) => {
   try {
     const { name, description, size, image, price, stock } = req.body;
 
@@ -69,10 +69,10 @@ router.post('/create', async (req, res) => {
     res.status(201).json(newProduct);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Error al crear el producto' });
+    res.status(500).json({ message: "Error al crear el producto" });
   }
 });
-  
+
 // Ruta para eliminar un producto por ID
 router.delete("/:id", async (req, res) => {
   try {
@@ -85,5 +85,4 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-  
 module.exports = router;
