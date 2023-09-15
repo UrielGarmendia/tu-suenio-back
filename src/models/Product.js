@@ -12,7 +12,6 @@ module.exports = (sequelize) => {
       name: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
       },
       description: {
         type: DataTypes.TEXT,
@@ -45,6 +44,10 @@ module.exports = (sequelize) => {
       image_secure_url: {
         type: DataTypes.STRING,
       },
+      id_categorie: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     {
       timestamps: false,
