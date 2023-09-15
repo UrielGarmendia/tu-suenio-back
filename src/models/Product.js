@@ -45,6 +45,10 @@ module.exports = (sequelize) => {
       image_secure_url: {
         type: DataTypes.STRING,
       },
+      id_categorie: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      }
     },
     {
       timestamps: false,
