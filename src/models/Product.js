@@ -39,6 +39,12 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
       },
+      image_public_id: {
+        type: DataTypes.STRING,
+      },
+      image_secure_url: {
+        type: DataTypes.STRING,
+      },
     },
     {
       timestamps: false,
