@@ -1,11 +1,12 @@
 const express = require("express");
 const router = express.Router();
-
+const fs = require("fs");
 const createProduct = require("../controllers/Products/createProduct");
 const getProduct = require("../controllers/Products/getProductById");
 const getProducts = require("../controllers/Products/getProducts");
 const putProduct = require("../controllers/Products/putProduct");
 const deleteProduct = require("../controllers/Products/deleteProductById");
+const destroyProduct = require("../controllers/Products/destroyProduct");
 
 // Ruta para obtener todos los productos
 router.get("/", async (req, res) => {
@@ -55,16 +56,14 @@ router.put("/:id", async (req, res) => {
 // Ruta para crear un nuevo producto
 router.post("/create", async (req, res) => {
   try {
-    const { name, description, size, image, price, stock } = req.body;
+    const data = req.body;
+    const filePath = data.image ?? req.files.image.tempFilePath;
 
-    const newProduct = await createProduct({
-      name,
-      description,
-      size,
-      image,
-      price,
-      stock,
-    });
+    const newProduct = await createProduct(data, filePath);
+
+    if (!data.image) {
+      await fs.unlink(filePath);
+    }
 
     res.status(201).json(newProduct);
   } catch (error) {
@@ -78,10 +77,22 @@ router.delete("/:id", async (req, res) => {
   try {
     const { id } = req.params;
     await deleteProduct(id);
-    res.status(200).json({ message: "Product successfully removed" });
+    res.status(200).json({ message: "Producto eliminado correctamente" });
   } catch (error) {
     console.error(error.message);
-    res.status(400).json({ error: "Error deleting product" });
+    res.status(400).json({ error: "Error al eliminar un producto" });
+  }
+});
+
+// Ruta para eliminar definitivamente de la DB
+router.delete("/destroy/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    await destroyProduct(id);
+    res.status(200).json({ message: "Producto eliminado correctamente" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ error: "Error al eliminar un producto" });
   }
 });
 

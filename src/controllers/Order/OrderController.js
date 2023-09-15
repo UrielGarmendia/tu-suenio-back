@@ -21,6 +21,7 @@ const createOrder = async (status, totalprice, UserId, ProductId) => {
     status,
     totalprice,
     UserId,
+    ProductId,
   });
 
   const products = await Product.findByPk(ProductId);
