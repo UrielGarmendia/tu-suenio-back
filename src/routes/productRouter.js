@@ -25,11 +25,14 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const productId = req.params.id;
   try {
-    const product = await getProduct(productId);
-    if (!product) {
-      return res.status(404).json({ message: "Producto no encontrado" });
-    }
-    res.json(product);
+    const product = await getProduct();
+    // if (!product) {
+    //   return res.status(404).json({ message: "Producto no encontrado" });
+    // }
+    const allProducts = await product.filter((p) => p.id == productId);
+    allProducts.length
+      ? res.status(200).json(allProducts)
+      : res.status(400).json({ message: "error producto ruta" });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Error al obtener el producto" });
