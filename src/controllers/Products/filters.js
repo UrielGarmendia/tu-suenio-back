@@ -1,4 +1,4 @@
-const { Product } = require('../../db')
+const { Product } = require("../../db");
 
 const getProductsByCategory = async (categoryId) => {
   try {
@@ -12,4 +12,4 @@ const getProductsByCategory = async (categoryId) => {
   }
 };
 
-module.exports = {getProductsByCategory};
+module.exports = { getProductsByCategory };

@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-  sequelize.define('Order', {
+  sequelize.define("Order", {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -15,6 +15,7 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
+
     timestamps: DataTypes.DATE,
   });
 };

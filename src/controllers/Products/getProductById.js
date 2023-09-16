@@ -1,14 +1,21 @@
 const db = require("../../db");
 
-const getProductById = async (productId) => {
+const getProductById = async () => {
   try {
-    const product = await db.Product.findByPk(productId);
-
-    if (!product) {
-      throw new Error('Producto no encontrado');
+    const product2 = await db.Product.findAll({
+      include: {
+        model: db.Categorie,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
+    });
+    if (!product2) {
+      throw new Error("Producto no encontrado");
     }
 
-    return product;
+    return product2;
   } catch (error) {
     throw error;
   }
