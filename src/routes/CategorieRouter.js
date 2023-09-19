@@ -32,7 +32,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-router.post("/", async (req, res) => {
+router.post("/create", async (req, res) => {
   const { name } = req.body;
   try {
     const createDb = await createCategorie(name);

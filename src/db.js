@@ -74,6 +74,7 @@ Product.belongsToMany(Order, {
   timestamps: false,
 });
 
+
 Review.belongsTo(Product);
 Product.hasMany(Review);
 Review.hasOne(User);
