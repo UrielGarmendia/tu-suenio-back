@@ -3,6 +3,7 @@ const {
   getAllCategorie,
   getCategorieByName,
   createCategorie,
+  deleteCategorie,
 } = require("../controllers/Categorie/CategorieController");
 
 const router = Router();
@@ -38,6 +39,17 @@ router.post("/create", async (req, res) => {
     res.status(200).json(createDb);
   } catch (error) {
     res.status(400).send("error:" + error.message);
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    await deleteCategorie(id);
+    res.status(200).json({ message: "Categorie borrado con exito" });
+  } catch (error) {
+    console.error(error.message);
+    res.status(400).json({ error: "Error al borrar la Categorie" });
   }
 });
 
