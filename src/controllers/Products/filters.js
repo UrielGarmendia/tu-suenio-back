@@ -19,10 +19,10 @@ const getProductsByCategory = async (categoryId) => {
   }
 };
 
-const getProductsBySize = async (sizeId) => {
+const getProductsBySize = async (size) => {
   try {
-    const products = await Product.findAll({
-      where: { id_size: sizeId },
+    const products = await db.Product.findAll({
+      where: { size },
     });
     return products;
   } catch (error) {
