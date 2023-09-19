@@ -7,6 +7,7 @@ const getProducts = require("../controllers/Products/getProducts");
 const putProduct = require("../controllers/Products/putProduct");
 const deleteProduct = require("../controllers/Products/deleteProductById");
 const destroyProduct = require("../controllers/Products/destroyProduct");
+const upload = require("../utils/multer");
 
 // Ruta para obtener todos los productos
 router.get("/", async (req, res) => {
@@ -41,10 +42,10 @@ router.get("/:id", async (req, res) => {
 
 // Ruta para actualizar un producto por ID
 router.put("/:id", async (req, res) => {
-  const productId = req.params.id;
+  const { id } = req.params;
   const updatedProductData = req.body;
   try {
-    const product = await putProduct(productId);
+    const product = await putProduct(id);
     if (!product) {
       return res.status(404).json({ message: "Producto no encontrado" });
     }
@@ -57,16 +58,13 @@ router.put("/:id", async (req, res) => {
 });
 
 // Ruta para crear un nuevo producto
-router.post("/create", async (req, res) => {
+router.post("/create", upload.single("image"), async (req, res) => {
   try {
     const data = req.body;
-    const filePath = data.image ?? req.files.image.tempFilePath;
+    const filePath = req.file.path;
+    console.log("archivo que trae del req.file: ", filePath);
 
     const newProduct = await createProduct(data, filePath);
-
-    if (!data.image) {
-      await fs.unlink(filePath);
-    }
 
     res.status(201).json(newProduct);
   } catch (error) {
