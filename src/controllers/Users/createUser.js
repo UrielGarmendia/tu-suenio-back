@@ -1,5 +1,6 @@
 const db = require("../../db");
 const path = require("path");
+const { sendRegistrationEmail } = require("../../utils/nodemailer");
 const defaultImageUrl = path.resolve("public/default-user");
 
 module.exports = async (userData) => {
@@ -13,6 +14,8 @@ module.exports = async (userData) => {
       address,
       image: defaultImageUrl,
     });
+
+    sendRegistrationEmail(newUser.id);
 
     return newUser;
   } catch (error) {
