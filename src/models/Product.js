@@ -21,6 +21,18 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      price: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+          },
+          size: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+      stock: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+          },
       isAvailable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
@@ -35,10 +47,6 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      id_size: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      }
     },
     {
       timestamps: false,

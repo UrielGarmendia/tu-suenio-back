@@ -22,11 +22,11 @@ router.get("/categorie/:categoryId", async (req, res) => {
   }
 });
 
-router.get('/size/:sizeId', async (req, res) => {
-  const { sizeId } = req.params;
+router.get('/size/:size', async (req, res) => {
+  const { size } = req.params;
 
   try {
-    const products = await getProductsBySize(sizeId);
+    const products = await getProductsBySize(size);
 
     if (products.length === 0) {
       return res.status(404).json({ message: 'No se encontraron productos en este tamaño.' });
