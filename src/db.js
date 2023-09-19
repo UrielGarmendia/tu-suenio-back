@@ -8,6 +8,7 @@ const OrderModel = require("./models/Order");
 const ProductModel = require("./models/Product");
 const ReviewModel = require("./models/Review");
 const UserModel = require("./models/User");
+const SizeModel = require("./models/Size")
 
 const sequelize = new Sequelize({
   database: DB_NAME,
@@ -51,8 +52,9 @@ OrderModel(sequelize);
 ProductModel(sequelize);
 ReviewModel(sequelize);
 UserModel(sequelize);
+SizeModel(sequelize);
 
-const { Categorie, Order, Product, Review, User } = sequelize.models;
+const { Categorie, Order, Product, Review, User, Size } = sequelize.models;
 
 Categorie.belongsToMany(Product, {
   through: "ProductCategorie",
@@ -73,6 +75,18 @@ Product.belongsToMany(Order, {
   through: "OrderProduct",
   timestamps: false,
 });
+
+Size.belongsToMany(Product, {
+  through: "ProductSize",
+  timestamps:false,
+});
+
+Product.belongsToMany(Size, {
+  through: "ProductSize",
+  timestamps:false,
+});
+
+
 
 Review.belongsTo(Product);
 Product.hasMany(Review);

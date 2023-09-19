@@ -17,22 +17,9 @@ module.exports = (sequelize) => {
         type: DataTypes.TEXT,
         allowNull: false,
       },
-      size: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       image: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      price: {
-        type: DataTypes.FLOAT,
-        allowNull: false,
-      },
-      stock: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 0,
       },
       isAvailable: {
         type: DataTypes.BOOLEAN,
@@ -45,6 +32,10 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
       },
       id_categorie: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      id_size: {
         type: DataTypes.STRING,
         allowNull: false,
       }
