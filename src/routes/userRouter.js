@@ -6,6 +6,7 @@ const getAllUsers = require("../controllers/Users/getAllUsers");
 const deleteUser = require("../controllers/Users/deleteUser");
 const restoreUser = require("../controllers/Users/restoreUser");
 const destroyUser = require("../controllers/Users/destroyUser");
+const { modifyUser } = require("../controllers/Users/userModify");
 
 const router = Router();
 
@@ -94,6 +95,23 @@ router.delete("/:id/destroy", async (req, res) => {
     res.status(200).json(deleted);
   } catch (error) {
     res.status(400).json({ error: error.message });
+  }
+});
+
+//Modificar usuario
+router.put("/:id/modify", async (req, res) => {
+  const userId = req.params.id;
+  const updateUser = req.body;
+  try {
+    const user = await modifyUser(userId);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    await user.update(updateUser);
+    res.json(user);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error update User" });
   }
 });
 
