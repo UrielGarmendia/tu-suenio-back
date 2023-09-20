@@ -9,7 +9,13 @@ const server = express();
 
 server.use(morgan("dev"));
 server.use(bodyParser.json());
-server.use(cors({ origin: "https://tu-suenio-front.vercel.app/" }));
+server.use(
+  cors({
+    origin: "https://tu-suenio-front.vercel.app/",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
