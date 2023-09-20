@@ -11,7 +11,7 @@ server.use(morgan("dev"));
 server.use(bodyParser.json());
 server.use(
   cors({
-    origin: "https://tu-suenio-front.vercel.app/",
+    origin: "https://tu-suenio-front.vercel.app",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
@@ -19,7 +19,7 @@ server.use(
 server.use((req, res, next) => {
   res.header(
     "Access-Control-Allow-Origin",
-    "https://tu-suenio-front.vercel.app/"
+    "https://tu-suenio-front.vercel.app"
   ); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
