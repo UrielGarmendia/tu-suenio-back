@@ -6,9 +6,11 @@ const userRouter = require("./userRouter");
 const sortProductsRouter = require("./sortProductsRouter");
 const filtersProductsRouter = require("./filtersProductRouter");
 const adminsRouter = require("./adminsRouter");
+const jsonRutas = require("./jsonRutas");
 
 const router = Router();
 
+router.use("/", jsonRutas);
 router.use("/products", productRouter);
 router.use("/user", userRouter);
 router.use("/categorie", CategorieRouter);
