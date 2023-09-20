@@ -1,0 +1,48 @@
+{
+    "rutas de Products": {
+        "getProducts (GET)": "https://tu-suenio-back.onrender.com/products ===> muestra todos los products",
+        "getProductsByName (GET)":"https://tu-suenio-back.onrender.com/products/?name={nombreDelProduct} ===> busca los products por nombre",
+        "getProductsById (GET)" : "https://tu-suenio-back.onrender.com/products/:id ===> esta ruta busca los products por id",
+        "putProduct (PUT)": "https://tu-suenio-back.onrender.com/products/:id ===> se utiliza para poder modificar un producto por id",
+        "postProduct (POST)":"https://tu-suenio-back.onrender.com/products/create ===> esta ruta es para crear nuevos products",
+        "deleteProduct (DELETE)":"https://tu-suenio-back.onrender.com/products/:id ===> utiliza el borrado logico",
+        "destroyProduct (DELETE":"https://tu-suenio-back.onrender.com/products/destroy/:id ===> esta ruta elimina definitivamente el product"
+    },
+    "rutas de User":{
+        "getUser (GET)": "https://tu-suenio-back.onrender.com/user ===> esta ruta trae todos los usuarios",
+        "getUserById (GET)": "https://tu-suenio-back.onrender.com/user/:id ===> busca usuario por id",
+        "postUser (POST)": "https://tu-suenio-back.onrender.com/user/register ===> esta ruta sirve para crear usuarios",
+        "loginUser (POST)":"https://tu-suenio-back.onrender.com/user/login ===> esta ruta hace que entres con un usuario ya creado",
+        "deleteUser (DELETE)": "https://tu-suenio-back.onrender.com/user/:id/delete ===> sirve para borrar por borrado logico",
+        "destroyUser (DELETE)":"https://tu-suenio-back.onrender.com/user/:id/destroy ===> elimina completamente el usuario",
+        "restoreUser (PUT)":"https://tu-suenio-back.onrender.com/user/:id/restore ===> sirve para restaurar el user",
+        "putUser (PUT)": "https://tu-suenio-back.onrender.com/user/:id/modify ===> esta ruta sirve para modificar el user"
+    },
+    "rutas de Categorie":{
+        "getCategorie (GET)": "https://tu-suenio-back.onrender.com/categorie ===> esta ruta trae todas las categorias ya creadas",
+        "getCategorieById (GET)": "https://tu-suenio-back.onrender.com/categorie/:id ===> trae las categorie con id",
+        "postCategorie (POST)": "https://tu-suenio-back.onrender.com/categorie/create ===> sirve para crear una nueva categorie",
+        "deleteCategorie (DELETE)": "https://tu-suenio-back.onrender.com/categorie/:id ===> elimina categorie por id"
+    },
+    "rutas de Order":{
+        "getOrder (GET)": "https://tu-suenio-back.onrender.com/order ===> retorna todas las orders creadas",
+        "getOrderById (GET)":"https://tu-suenio-back.onrender.com/order/:id ===> busca la order por id",
+        "createOrder (POST)": "https://tu-suenio-back.onrender.com/order ===> crea una nueva order",
+        "deleteOrder (DELETE)": "https://tu-suenio-back.onrender.com/order/:id ===> borra order por id",
+        "putOrder": "https://tu-suenio-back.onrender.com/order/:id ===> se modifica la order atraves del id"
+    },
+    "ruta Admins":{
+        "getAdmins": "https://tu-suenio-back.onrender.com/admins ===> trae todos los usuarios que sean admins"
+    },
+    "rutas Ordenamientos":{
+        "sortAlp-asc": "https://tu-suenio-back.onrender.com/sort/alp-asc ===> ordena los products alfabeticamente de forma ascendente",
+        "sortAlp-desc": "https://tu-suenio-back.onrender.com/sort/alp-desc ===> ordena los products alfabeticamente de forma descendente",
+        "sortPrice-asc": "https://tu-suenio-back.onrender.com/sort/price-asc ===> ordena los precios de manera ascendente",
+        "sortPrice-desc": "https://tu-suenio-back.onrender.com/sort/price-desc ===> ordena los precios de manera descendente"
+        },
+        "rutas de Filtros":{ 
+            "filterCategorie":"https://tu-suenio-back.onrender.com/filter/categorie/:categorieId ===> esta ruta filtra los products por categorie",
+            "filterSize": "https://tu-suenio-back.onrender.com/filter/size/nameSize ===> filtro por el nombre del tamaño",
+            "filterCombined":"https://tu-suenio-back.onrender.com/filter/combined/:categorieId/nameSize ===> combinacion de los filtros"
+        }
+}
