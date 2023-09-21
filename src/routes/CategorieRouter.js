@@ -14,6 +14,9 @@ router.get("/", async (req, res) => {
     const categories = name
       ? await getCategorieByName(name)
       : await getAllCategorie();
+    if (!categories) {
+      throw new Error("Categorie not found");
+    }
     res.status(200).json(categories);
   } catch (error) {
     res.status(400).send("error:" + error.message);
