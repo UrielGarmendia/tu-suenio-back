@@ -8,11 +8,11 @@ module.exports = async (userData) => {
   try {
     const createUser = {
       name,
-      lastName,
       email,
       image,
       sub
     }
+    if(lastName) createUser.lastName = lastName;
     if (dni) createUser.dni = dni;
     if (address) createUser.address = address;
     if (phone) createUser.phone = phone;
