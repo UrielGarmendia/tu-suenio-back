@@ -24,15 +24,15 @@ module.exports = (sequelize) => {
       price: {
         type: DataTypes.FLOAT,
         allowNull: false,
-          },
-          size: {
-            type: DataTypes.STRING,
-            allowNull: false,
-          },
+      },
+      size: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       stock: {
         type: DataTypes.INTEGER,
         allowNull: false,
-          },
+      },
       isAvailable: {
         type: DataTypes.BOOLEAN,
         defaultValue: true,
