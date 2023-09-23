@@ -23,6 +23,13 @@ const getProductsBySize = async (size) => {
   try {
     const products = await db.Product.findAll({
       where: { size },
+      include: {
+        model: db.Categorie,
+        attributes: ["name"],
+        through: {
+          attributes: [],
+        },
+      },
     });
     return products;
   } catch (error) {
@@ -48,4 +55,8 @@ const getProductsByCategoryAndSize = async (categoryId, size) => {
   }
 };
 
-module.exports = { getProductsByCategory, getProductsBySize, getProductsByCategoryAndSize };
+module.exports = {
+  getProductsByCategory,
+  getProductsBySize,
+  getProductsByCategoryAndSize,
+};

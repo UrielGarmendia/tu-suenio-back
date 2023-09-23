@@ -7,6 +7,7 @@ const sortProductsRouter = require("./sortProductsRouter");
 const filtersProductsRouter = require("./filtersProductRouter");
 const adminsRouter = require("./adminsRouter");
 const jsonRutas = require("./jsonRutas");
+const reviewRouter = require("./reviewRouter");
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use("/sort", sortProductsRouter);
 router.use("/filter", filtersProductsRouter);
 router.use("/order", OrderRouter);
 router.use("/admins", adminsRouter);
+// router.use("/review", reviewRouter);
 
 module.exports = router;
