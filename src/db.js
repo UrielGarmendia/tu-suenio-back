@@ -74,11 +74,10 @@ Product.belongsToMany(Order, {
   timestamps: false,
 });
 
-
-Review.belongsTo(Product);
-Product.hasMany(Review);
+Review.belongsTo(Product, { foreignKey: "productId" });
+Product.hasMany(Review, { foreignKey: "productId" });
 Review.hasOne(User);
-User.hasMany(Review);
+User.hasMany(Review, { foreignKey: "userId" });
 Order.belongsTo(User);
 User.hasMany(Order);
 
