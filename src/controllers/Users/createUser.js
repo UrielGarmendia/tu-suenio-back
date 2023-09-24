@@ -4,20 +4,24 @@ const { sendRegistrationEmail } = require("../../utils/nodemailer");
 const defaultImageUrl = path.resolve("public/default-user");
 
 module.exports = async (userData) => {
-  const { email, phone, password, name, address } = userData;
+  const { name, lastName, email, dni, address, image, phone, sub } = userData;
   try {
-    const newUser = await db.User.create({
+    const createUser = {
       name,
       email,
-      password,
-      phone,
-      address,
-      image: defaultImageUrl,
-    });
+      image,
+      sub
+    }
+    if(lastName) createUser.lastName = lastName;
+    if (dni) createUser.dni = dni;
+    if (address) createUser.address = address;
+    if (phone) createUser.phone = phone;
 
-    sendRegistrationEmail(newUser.id);
-
+    const newUser = await db.User.create(createUser);
     return newUser;
+
+    // sendRegistrationEmail(newUser.id);
+
   } catch (error) {
     // console.error(error);
     throw new Error("Error al crear un usuario");

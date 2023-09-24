@@ -50,8 +50,8 @@ router.post("/register", async (req, res) => {
 // Entrar con usuario ya creado (Login)
 router.post("/login", async (req, res) => {
   try {
-    const { name, password, email } = req.body;
-    const userToLogin = await userLogin(name, password, email);
+    const {sub} = req.body;
+    const userToLogin = await userLogin(sub);
     res.status(200).json(userToLogin);
   } catch (error) {
     console.log(error.message);

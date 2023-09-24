@@ -13,14 +13,17 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      password: {
+      lastName: {
         type: DataTypes.STRING,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
-        unique: true,
+      },
+      dni:{
+        type: DataTypes.STRING, 
+        allowNull: true,
       },
       address: {
         type: DataTypes.STRING,
@@ -42,6 +45,11 @@ module.exports = (sequelize) => {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
       },
+      sub: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: true,
+      }
     },
     {
       timestamps: false,
