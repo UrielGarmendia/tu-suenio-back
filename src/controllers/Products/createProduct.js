@@ -5,7 +5,6 @@ const { Categorie } = require("../../db");
 const createProduct = async (data, filePath) => {
   try {
     console.log("data que viene de la ruta: ", data);
-    console.log("imagen del form", data.image);
     const product = { ...data };
     const { id_categorie } = product;
     console.log("path de la imagen: ", filePath);
