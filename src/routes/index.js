@@ -8,6 +8,7 @@ const filtersProductsRouter = require("./filtersProductRouter");
 const adminsRouter = require("./adminsRouter");
 const jsonRutas = require("./jsonRutas");
 const reviewRouter = require("./reviewRouter");
+const paymentRouter = require("./paymentRouter");
 
 const router = Router();
 
@@ -20,5 +21,6 @@ router.use("/filter", filtersProductsRouter);
 router.use("/order", OrderRouter);
 router.use("/admins", adminsRouter);
 // router.use("/review", reviewRouter);
+router.use("/payment", paymentRouter);
 
 module.exports = router;
