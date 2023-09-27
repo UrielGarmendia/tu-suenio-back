@@ -21,8 +21,15 @@ const createCategorie = async (name) => {
   return create;
 };
 
+const deleteCategorie = async (id) => {
+  const categorie = await Categorie.findByPk(id);
+  if (!categorie) throw new Error("categorie not found");
+  await categorie.destroy();
+};
+
 module.exports = {
   getAllCategorie,
   getCategorieByName,
   createCategorie,
+  deleteCategorie,
 };

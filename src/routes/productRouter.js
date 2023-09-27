@@ -61,7 +61,7 @@ router.put("/:id", async (req, res) => {
 router.post("/create", upload.single("image"), async (req, res) => {
   try {
     const data = req.body;
-    const filePath = req.file.path;
+    const filePath = req.file?.path;
     console.log("archivo que trae del req.file: ", filePath);
 
     const newProduct = await createProduct(data, filePath);

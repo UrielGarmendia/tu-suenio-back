@@ -51,6 +51,7 @@ const sendRegistrationEmail = async (userId) => {
                 border-radius: 5px;
                 box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
                 border: 1px solid black;
+                text-align: center;
             }
     
             .header {
@@ -95,7 +96,7 @@ const sendRegistrationEmail = async (userId) => {
     <body>
         <div class="container">
             <div class="header">
-                <h1>¡Thanks for registering!</h1>
+                <h1>¡Gracias por registrarte!</h1>
             </div>
             <div class="content">
                 <p class="thank-you">¡Hola ${user.name}!</p>
@@ -104,7 +105,7 @@ const sendRegistrationEmail = async (userId) => {
                 <p class="message">Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
                 <p class="message">¡Esperamos que disfrutes de todos los beneficios que tenemos para ofrecerte.!</p>
                 <p class="message">Haga clic en el botón a continuación para comenzar a explorar nuestro sitio:</p>
-                <a class="cta-button" href="ruta_del_deploy_front">Visitar Tu Sueño</a>
+                <a class="cta-button" href="https://tu-suenio-front.vercel.app/">Visitar Tu Sueño</a>
             </div>
             <div class="footer">
                 <p>© 2023 Tu Sueño. Todos los derechos reservados.</p>
