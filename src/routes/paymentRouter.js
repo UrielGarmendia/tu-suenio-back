@@ -9,8 +9,7 @@ if (ACCESS_TOKEN) {
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
     headers: {
-      Authorization: "Bearer " + PUBLIC_KEY,
-      "X-Requested-With": "XMLHttpRequest",
+      Authorization: "Bearer " + ACCESS_TOKEN,
     },
   });
 }
