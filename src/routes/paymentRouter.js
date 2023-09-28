@@ -1,13 +1,17 @@
 const { Router } = require("express");
 const router = Router();
 const mercadopago = require("mercadopago");
-const { ACCESS_TOKEN, CLIENT_ID, CLIENT_SECRET } = process.env;
+const { ACCESS_TOKEN, CLIENT_ID, CLIENT_SECRET, PUBLIC_KEY } = process.env;
 
 if (ACCESS_TOKEN) {
   mercadopago.configure({
     access_token: ACCESS_TOKEN,
     client_id: CLIENT_ID,
     client_secret: CLIENT_SECRET,
+    headers: {
+      Authorization: "Bearer " + PUBLIC_KEY,
+      "X-Requested-With": "XMLHttpRequest",
+    },
   });
 }
 
