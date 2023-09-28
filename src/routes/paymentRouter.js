@@ -12,7 +12,11 @@ if (ACCESS_TOKEN) {
 }
 
 router.get("/success", async (req, res) => {
-  res.send("funca loco");
+  res.send("funca loco SUCCESS");
+});
+
+router.get("/failure", async (req, res) => {
+  res.send("funca loco FAILURE");
 });
 
 router.post("/create_preference", async (req, res) => {
@@ -21,6 +25,7 @@ router.post("/create_preference", async (req, res) => {
 
   const preference = {
     items: productos,
+    currency_id: "COL",
     back_urls: {
       success: "https://tu-suenio-back.onrender.com/payment/success",
       failure: "https://tu-suenio-back.onrender.com/payment/failure",
