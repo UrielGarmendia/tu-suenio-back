@@ -5,14 +5,13 @@ const { ACCESS_TOKEN, CLIENT_ID, CLIENT_SECRET, PUBLIC_KEY } = process.env;
 
 mercadopago.configure({
   access_token: ACCESS_TOKEN,
-  client_id: CLIENT_ID,
-  client_secret: CLIENT_SECRET,
+  // client_id: CLIENT_ID,
+  // client_secret: CLIENT_SECRET,
 });
 
-mercadopago.configurations.setAccessToken(config.access_token);
-
 router.get("/success", async (req, res) => {
-  res.send("funca loco SUCCESS");
+  const { payment_id, status, payment_type } = req.params;
+  res.send(payment_id, status, payment_type);
 });
 
 router.get("/failure", async (req, res) => {
@@ -21,7 +20,6 @@ router.get("/failure", async (req, res) => {
 
 router.post("/create_preference", async (req, res) => {
   const productos = req.body;
-  //TODO: Cambiar a productos ya que recibe mas de 1 productos(borrar el array)
 
   const preference = {
     items: productos,
@@ -37,9 +35,8 @@ router.post("/create_preference", async (req, res) => {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      res.json({
-        id: response.body.id,
-      });
+      console.log(response);
+      res.json(response.body);
     })
     .catch(function (error) {
       console.log(error);
