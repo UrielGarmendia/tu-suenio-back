@@ -17,12 +17,12 @@ const sequelize = new Sequelize({
   port: DB_PORT,
   dialect: "postgres",
   logging: false,
-  // dialectOptions: {
-  //   ssl: {
-  //     require: true,
-  //     rejectUnauthorized: false,
-  //   },
-  // },
+   dialectOptions: {
+     ssl: {
+       require: true,
+       rejectUnauthorized: false,
+     },
+   },
 });
 
 const basename = path.basename(__filename);

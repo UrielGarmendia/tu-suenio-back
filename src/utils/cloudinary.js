@@ -10,7 +10,7 @@ config({
 
 const uploadImgProduct = async (filePath) => {
   return await uploader.upload(filePath, {
-    folder: "Agilix",
+    folder: "tu-suenio/alcancias",
   });
 };
 
