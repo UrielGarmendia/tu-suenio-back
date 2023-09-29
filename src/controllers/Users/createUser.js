@@ -10,9 +10,9 @@ module.exports = async (userData) => {
       name,
       email,
       image,
-      sub
-    }
-    if(lastName) createUser.lastName = lastName;
+      sub,
+    };
+    if (lastName) createUser.lastName = lastName;
     if (dni) createUser.dni = dni;
     if (address) createUser.address = address;
     if (phone) createUser.phone = phone;
@@ -21,7 +21,6 @@ module.exports = async (userData) => {
     return newUser;
 
     // sendRegistrationEmail(newUser.id);
-
   } catch (error) {
     // console.error(error);
     throw new Error("Error al crear un usuario");
