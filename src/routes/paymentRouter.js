@@ -18,6 +18,7 @@ router.get("/failure", async (req, res) => {
   res.send("funca loco FAILURE");
 });
 
+
 router.post("/create_preference", async (req, res) => {
   const productos = req.body;
 
@@ -25,8 +26,8 @@ router.post("/create_preference", async (req, res) => {
     items: productos,
     currency_id: "COL",
     back_urls: {
-      success: "https://tu-suenio-back.onrender.com/payment/success",
-      failure: "https://tu-suenio-back.onrender.com/payment/failure",
+      success: "https://tu-suenio-back.onrender.com/alcancias",
+      failure: "https://tu-suenio-back.onrender.com/alcancias",
       pending: "",
     },
     auto_return: "approved",
@@ -35,7 +36,9 @@ router.post("/create_preference", async (req, res) => {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
+
       console.log(response);
+
       res.json(response.body);
     })
     .catch(function (error) {
