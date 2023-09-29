@@ -3,7 +3,6 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const routes = require("./routes/index");
-const { ACCESS_TOKEN } = process.env;
 require("./db");
 
 const server = express();

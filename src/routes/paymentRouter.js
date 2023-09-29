@@ -7,10 +7,9 @@ mercadopago.configure({
   access_token: ACCESS_TOKEN,
   client_id: CLIENT_ID,
   client_secret: CLIENT_SECRET,
-  header: {
-    Authorization: "Bearer " + ACCESS_TOKEN,
-  },
 });
+
+mercadopago.configurations.setAccessToken(config.access_token);
 
 router.get("/success", async (req, res) => {
   res.send("funca loco SUCCESS");
