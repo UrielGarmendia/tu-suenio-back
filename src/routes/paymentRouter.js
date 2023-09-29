@@ -1,29 +1,36 @@
 const { Router } = require("express");
 const router = Router();
 const mercadopago = require("mercadopago");
-const { ACCESS_TOKEN, CLIENT_ID, CLIENT_SECRET } = process.env;
+const { ACCESS_TOKEN, CLIENT_ID, CLIENT_SECRET, PUBLIC_KEY } = process.env;
 
-if (ACCESS_TOKEN) {
-  mercadopago.configure({
-    access_token: ACCESS_TOKEN,
-    client_id: CLIENT_ID,
-    client_secret: CLIENT_SECRET,
-  });
-}
+mercadopago.configure({
+  access_token: ACCESS_TOKEN,
+  // client_id: CLIENT_ID,
+  // client_secret: CLIENT_SECRET,
+});
 
 router.get("/success", async (req, res) => {
-  res.send("funca loco");
+  res.send("funca loco SUCCESS");
+});
+
+router.get("/failure", async (req, res) => {
+  res.send("funca loco FAILURE");
+});
+
+router.post("/notification", async (req, res) => {
+  console.log("notificar");
+  res.status(200).send("TODO OK MAN!");
 });
 
 router.post("/create_preference", async (req, res) => {
   const productos = req.body;
-  //TODO: Cambiar a productos ya que recibe mas de 1 productos(borrar el array)
 
   const preference = {
     items: productos,
+    currency_id: "COL",
     back_urls: {
-      success: "https://tu-suenio-back.onrender.com/payment/success",
-      failure: "https://tu-suenio-back.onrender.com/payment/failure",
+      success: "https://tu-suenio-back.onrender.com/alcancias",
+      failure: "https://tu-suenio-back.onrender.com/alcancias",
       pending: "",
     },
     auto_return: "approved",
@@ -32,9 +39,8 @@ router.post("/create_preference", async (req, res) => {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      res.json({
-        id: response.body.id,
-      });
+      console.log(response.body);
+      res.json(response.body);
     })
     .catch(function (error) {
       console.log(error);
