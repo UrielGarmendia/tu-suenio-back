@@ -17,10 +17,6 @@ router.get("/failure", async (req, res) => {
   res.send("funca loco FAILURE");
 });
 
-router.post("/notification", async (req, res) => {
-  console.log("notificar");
-  res.status(200).send("TODO OK MAN!");
-});
 
 router.post("/create_preference", async (req, res) => {
   const productos = req.body;
