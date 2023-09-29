@@ -10,7 +10,8 @@ mercadopago.configure({
 });
 
 router.get("/success", async (req, res) => {
-  res.send("funca loco SUCCESS");
+  const { payment_id, status, payment_type } = req.params;
+  res.send(payment_id, status, payment_type);
 });
 
 router.get("/failure", async (req, res) => {
@@ -35,7 +36,9 @@ router.post("/create_preference", async (req, res) => {
   mercadopago.preferences
     .create(preference)
     .then(function (response) {
-      console.log(response.body);
+
+      console.log(response);
+
       res.json(response.body);
     })
     .catch(function (error) {
