@@ -18,7 +18,7 @@ server.use(
   })
 );
 server.use((req, res, next) => {
-  res.header(`Authorization: Bearer ${ACCESS_TOKEN}`);
+  res.header("Authorization", `"Bearer ${ACCESS_TOKEN}`);
   res.header(
     "Access-Control-Allow-Origin",
     "https://tu-suenio-front.vercel.app"
