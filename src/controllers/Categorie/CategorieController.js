@@ -27,9 +27,26 @@ const deleteCategorie = async (id) => {
   await categorie.destroy();
 };
 
+const putCategorie = async (categorieId, updatedCategorieData) => {
+  try {
+    const categorie = await Categorie.findByPk(categorieId);
+
+    if (!categorie) {
+      throw new Error('Categoria no encontrado');
+    }
+
+    await categorie.update(updatedCategorieData);
+
+    return categorie;
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getAllCategorie,
   getCategorieByName,
   createCategorie,
   deleteCategorie,
+  putCategorie,
 };
