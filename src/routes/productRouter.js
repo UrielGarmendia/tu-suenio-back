@@ -8,6 +8,7 @@ const putProduct = require("../controllers/Products/putProduct");
 const deleteProduct = require("../controllers/Products/deleteProductById");
 const destroyProduct = require("../controllers/Products/destroyProduct");
 const upload = require("../utils/multer");
+const { uploadImgProduct } = require("../utils/cloudinary");
 
 // Ruta para obtener todos los productos
 router.get("/", async (req, res) => {
@@ -62,6 +63,7 @@ router.post("/create", upload.single("image"), async (req, res) => {
   try {
     const data = req.body;
     const filePath = req.file?.path;
+    const result = await uploadImgProduct(filePath);
     console.log("archivo que trae del req.file: ", filePath);
 
     const newProduct = await createProduct(data, filePath);
