@@ -4,6 +4,7 @@ const {
   getCategorieByName,
   createCategorie,
   deleteCategorie,
+  putCategorie,
 } = require("../controllers/Categorie/CategorieController");
 
 const router = Router();
@@ -53,6 +54,22 @@ router.delete("/:id", async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(400).json({ error: "Error al borrar la Categorie" });
+  }
+});
+
+router.put("/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedCategorieData = req.body;
+  try {
+    const categorie = await putCategorie(id);
+    if (!categorie) {
+      return res.status(404).json({ message: "Categoria no encontrada" });
+    }
+    await categorie.update(updatedCategorieData);
+    res.json(categorie);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error al actualizar la categoria" });
   }
 });
 
