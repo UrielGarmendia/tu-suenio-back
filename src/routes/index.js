@@ -20,7 +20,7 @@ router.use("/sort", sortProductsRouter);
 router.use("/filter", filtersProductsRouter);
 router.use("/order", OrderRouter);
 router.use("/admins", adminsRouter);
-// router.use("/review", reviewRouter);
+router.use("/review", reviewRouter);
 router.use("/payment", paymentRouter);
 
 module.exports = router;

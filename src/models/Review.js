@@ -27,6 +27,18 @@ module.exports = (sequelize) => {
           key: "id",
         },
       },
+      date: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+      },
+      rating: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 1,
+          max: 5,
+        },
+      },
     },
     {
       timestamps: false,
