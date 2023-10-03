@@ -13,10 +13,10 @@ router.post("/newPayment", async (req, res) => {
       amount: info.amount,
       payment_method: info.id,
       currency: "usd",
-      automatic_payment_methods: { enabled: true },
+      // automatic_payment_methods: { enabled: true },
       confirm: true,
       return_url: "http://localhost:3001/payment/success",
-      use_stripe_sdk: true,
+      // use_stripe_sdk: true,
     });
 
     res.status(200).send({ message: payment.status, payment });

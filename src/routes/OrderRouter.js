@@ -33,9 +33,9 @@ router.get("/:id", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { status, totalprice, UserId, ProductId } = req.body;
+  const { status, totalprice, UserId, products } = req.body;
   try {
-    const createDb = await createOrder(status, totalprice, UserId, ProductId);
+    const createDb = await createOrder(status, totalprice, UserId, products);
     res.status(200).json(createDb);
   } catch (error) {
     res.status(400).send("error:" + error.message);
