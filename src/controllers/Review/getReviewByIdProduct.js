@@ -1,9 +1,23 @@
-const { Review } = require("../../db");
+const { Review, User } = require("../../db");
 
 const getReviewByIdProduct = async (id) => {
-  const getReview = await Review.findAll({ where: { productId: id } });
-  if (!getReview) throw new Error("No se encontro con ese Id");
-  return getReview;
+  try {
+    const reviews = await Review.findAll({
+      where: { productId: id },
+      include: {
+        model: User,
+        attributes: ["name"],
+      },
+    });
+
+    if (!reviews) {
+      throw new Error("No se encontraron reviews para este producto");
+    }
+
+    return reviews;
+  } catch (error) {
+    throw error;
+  }
 };
 
 module.exports = {
