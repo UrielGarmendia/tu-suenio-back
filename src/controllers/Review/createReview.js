@@ -12,6 +12,8 @@ const createReview = async (comment, rating, userId, productId) => {
 
   const newReview = await Review.create({ comment, rating, userId, productId });
   if (!newReview) throw new Error("No se pudo crear una review");
+  newReview.setDataValue("userName", user.name)
+  
   return newReview;
 };
 

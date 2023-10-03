@@ -16,19 +16,18 @@ const getOrderByStatus = async (status) => {
   }
 };
 
-const createOrder = async (status, totalprice, UserId, ProductId) => {
+const createOrder = async (status, totalprice, UserId, products) => {
   const createOrder = await Order.create({
     status,
     totalprice,
     UserId,
-    ProductId,
+    products,
   });
 
-  const products = await Product.findByPk(ProductId);
-  if (!products) {
-    throw new Error("Product not found");
+  //
+  if (!createOrder) {
+    throw new Error("Hubo un error a la hora de crear un producto");
   }
-  await createOrder.addProducts(products);
   return createOrder;
 };
 

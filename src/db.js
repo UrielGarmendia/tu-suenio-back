@@ -17,12 +17,12 @@ const sequelize = new Sequelize({
   port: DB_PORT,
   dialect: "postgres",
   logging: false,
-   dialectOptions: {
-     ssl: {
-       require: true,
-       rejectUnauthorized: false,
-     },
-   },
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false,
+    },
+  },
 });
 
 const basename = path.basename(__filename);
@@ -76,7 +76,7 @@ Product.belongsToMany(Order, {
 
 Review.belongsTo(Product, { foreignKey: "productId" });
 Product.hasMany(Review, { foreignKey: "productId" });
-Review.hasOne(User);
+Review.belongsTo(User, { foreignKey: "userId" });
 User.hasMany(Review, { foreignKey: "userId" });
 Order.belongsTo(User);
 User.hasMany(Order);
