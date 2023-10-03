@@ -1,14 +1,17 @@
 const db = require("../../db");
 
-const deleteProduct = async (productId) => {
+const toggleProductAvailability = async (productId, isAvailable = false) => {
   const product = await db.Product.findByPk(productId);
 
   if (!product) throw new Error("Product not found");
 
-  if (!product.isAvailable) throw new Error("Product is already deleted");
+  if (product.isAvailable === isAvailable) {
+    const action = isAvailable ? "activated" : "deactivated";
+    throw new Error(`Product is already ${action}`);
+  }
 
-  product.isAvailable = false;
+  product.isAvailable = isAvailable;
   await product.save();
 };
 
-module.exports = deleteProduct;
+module.exports = toggleProductAvailability;
