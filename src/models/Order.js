@@ -15,7 +15,10 @@ module.exports = (sequelize) => {
       type: DataTypes.FLOAT,
       allowNull: false,
     },
-
+    products: {
+      type: DataTypes.ARRAY(DataTypes.JSON),
+      allowNull: false,
+    },
     timestamps: DataTypes.DATE,
   });
 };

@@ -1,8 +1,12 @@
 const { Router } = require("express");
 const { getAllReview } = require("../controllers/Review/getReview");
 const { createReview } = require("../controllers/Review/createReview");
-const { getReviewsByUserName } = require("../controllers/Review/getReviewsByUserName");
-const { getReviewByIdProduct } = require("../controllers/Review/getReviewByIdProduct");
+const {
+  getReviewsByUserName,
+} = require("../controllers/Review/getReviewsByUserName");
+const {
+  getReviewByIdProduct,
+} = require("../controllers/Review/getReviewByIdProduct");
 const { deleteReview } = require("../controllers/Review/deleteReview");
 const { modifyReview } = require("../controllers/Review/modifyReview");
 const router = Router();
@@ -31,15 +35,15 @@ router.post("/create", async (req, res) => {
 });
 
 router.get("/user/:userName", async (req, res) => {
-    const { userName } = req.params;
-    try {
-      const reviews = await getReviewsByUserName(userName);
-      res.status(200).json(reviews);
-    } catch (error) {
-      console.error(error);
-      res.status(400).json({ message: error.message });
-    }
-  });
+  const { userName } = req.params;
+  try {
+    const reviews = await getReviewsByUserName(userName);
+    res.status(200).json(reviews);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: error.message });
+  }
+});
 
 router.get("/product/:id", async (req, res) => {
   const { id } = req.params;
