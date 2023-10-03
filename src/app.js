@@ -9,9 +9,17 @@ const server = express();
 
 server.use(morgan("dev"));
 server.use(bodyParser.json());
-server.use(cors({ origin: "http://localhost:5173" }));
+server.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+);
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:5173"); // update to match the domain you will make the request from
+
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
