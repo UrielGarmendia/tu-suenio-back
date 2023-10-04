@@ -17,7 +17,7 @@ router.post("/newPayment", async (req, res) => {
       currency: "usd",
       // automatic_payment_methods: { enabled: true },
       confirm: true,
-      return_url: "http://localhost:3001/payment/success",
+      return_url: "https://tu-suenio-back.onrender.com/payment/success",
       // use_stripe_sdk: true,
     });
 

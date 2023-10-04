@@ -105,7 +105,7 @@ const sendRegistrationEmail = async (userId) => {
                 <p class="message">Si tienes alguna pregunta o necesitas ayuda, no dudes en contactarnos.</p>
                 <p class="message">¡Esperamos que disfrutes de todos los beneficios que tenemos para ofrecerte.!</p>
                 <p class="message">Haga clic en el botón a continuación para comenzar a explorar nuestro sitio:</p>
-                <a class="cta-button" href="http://localhost:5173/">Visitar Tu Sueño</a>
+                <a class="cta-button" href="https://tu-suenio-front.vercel.app/">Visitar Tu Sueño</a>
             </div>
             <div class="footer">
                 <p>© 2023 Tu Sueño. Todos los derechos reservados.</p>
@@ -242,7 +242,7 @@ const sendPurchaseEmail = async (user, order) => {
                   <p>Si tienes alguna pregunta o necesitas ayuda con tu pedido, no dudes en contactarnos.</p>
                   <p>¡Esperamos que disfrutes de tu compra y vuelvas pronto!</p>
                   <p>Haga clic en el botón de abajo para visitar nuestro sitio:</p>
-                  <a class="cta-button" href="http://localhost:5173/">Visitar TuSueño</a>
+                  <a class="cta-button" href="https://tu-suenio-front.vercel.app/">Visitar TuSueño</a>
               </div>
               <p class="footer">© 2023 TuSueño. All rights reserved.</p>
           </div>
