@@ -1,6 +1,5 @@
 const { MAIL_USERNAME, MAIL_PASSWORD } = process.env;
 const { User, Product } = require("../db");
-
 const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({

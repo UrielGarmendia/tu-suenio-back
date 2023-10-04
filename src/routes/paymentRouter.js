@@ -4,7 +4,6 @@ const { Order, User } = require("../db");
 const { sendPurchaseEmail } = require("../utils/nodemailer");
 const { CLAVE_PRIV } = process.env;
 const router = Router();
-
 const stripe = new Stripe(CLAVE_PRIV);
 
 router.post("/newPayment", async (req, res) => {
