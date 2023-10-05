@@ -18,11 +18,11 @@ module.exports = async (userData) => {
     if (phone) createUser.phone = phone;
 
     const newUser = await db.User.create(createUser);
-    return newUser;
+    sendRegistrationEmail(newUser.id);
 
-    // sendRegistrationEmail(newUser.id);
+    return newUser;
   } catch (error) {
-    // console.error(error);
+    console.error(error);
     throw new Error("Error al crear un usuario");
   }
 };
