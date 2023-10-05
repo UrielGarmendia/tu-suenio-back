@@ -5,6 +5,13 @@ const getProducts = async (name) => {
   const products = name
     ? await db.Product.findAll({
         where: { name: { [Op.iLike]: `%${name}%` } },
+        include: {
+          model: db.Categorie,
+          attributes: ["name"],
+          through: {
+            attributes: [],
+          },
+        }
       })
     : await db.Product.findAll({
         include: {
